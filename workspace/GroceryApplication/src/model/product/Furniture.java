@@ -16,7 +16,7 @@ public class Furniture extends Product{
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Furniture, type: " + type + ", price: " + price + ", height: " + height;
+		return super.toString() + " - Furniture, type: " + type + ", price: " + price + ", height: " + height;
 		
 	}
 

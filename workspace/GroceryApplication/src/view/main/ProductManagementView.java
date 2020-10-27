@@ -1,6 +1,7 @@
 package view.main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Label;
@@ -9,6 +10,7 @@ import java.util.Date;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -38,6 +40,8 @@ public class ProductManagementView {
 	private JButton deleteButton;
 	private JButton addFoodButton;
 	private JTextField foodName;
+	private JTextField foodColor;
+	private JTextField foodWeight;
 	
 	
 	
@@ -91,18 +95,37 @@ public class ProductManagementView {
 		//Food field panel
 		addFoodPanelFields = new JPanel();
 		addFoodPanelFields.setLayout(new FlowLayout());
+		
+		
 		label3 = new JLabel("Name");
 		addFoodPanelFields.add(label3);
 		foodName = new JTextField();
 		foodName.setPreferredSize(new Dimension(100,20));
 		addFoodPanelFields.add(foodName);
+		
+		label3 = new JLabel("Color");
+		addFoodPanelFields.add(label3);
+		foodColor = new JTextField();
+		foodColor.setPreferredSize(new Dimension(100,20));
+		addFoodPanelFields.add(foodColor);
+		
+		label3 = new JLabel("Weight");
+		addFoodPanelFields.add(label3);
+		foodWeight = new JTextField();
+		foodWeight.setPreferredSize(new Dimension(100,20));
+		addFoodPanelFields.add(foodWeight);
+		
 		addFoodPanel.add(addFoodPanelFields, BorderLayout.CENTER);
 		//Add food button
 		addFoodButton = new JButton("Add");
-		addFoodButton.addActionListener(productController.new Add(productList, foodName));
+		addFoodButton.addActionListener(productController.new Add(productList, directorList, directors, foodName, foodColor, foodWeight));
 		addFoodPanel.add(addFoodButton, BorderLayout.SOUTH);
 		//Add product panel to frame
 		content.add(addFoodPanel);
+		
+		//JFormattedTextField(2424.50);
+	   // input.setValue(2424.50);
+	    //input.setColumns(20);
 		
 	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
