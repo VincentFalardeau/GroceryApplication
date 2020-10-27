@@ -15,4 +15,9 @@ public abstract class Product {
 	public void setDirectorName(String directorName) {
 		this.directorName = directorName;
 	}
+	
+	@Override
+	public String toString() {
+		return "Added by director: " + directorName;
+	}
 }

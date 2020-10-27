@@ -21,6 +21,10 @@ public class AvailableProducts {
 		products.add(product);
 	}
 	
+	public void remove(int index) {
+		products.remove(index);
+	}
+	
 	public String[] toStringArray() {
 		
 		String[] array = new String[products.size()];
