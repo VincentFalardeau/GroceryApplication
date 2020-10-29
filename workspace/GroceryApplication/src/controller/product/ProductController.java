@@ -20,18 +20,14 @@ import model.product.Product;
 
 public class ProductController {
 	
+	//Models
 	private AvailableProducts products;
+	private Directors directors;
 	
-	public ProductController(AvailableProducts products) {
-		this.setProducts(products);
-	}
-
-	public AvailableProducts getProducts() {
-		return products;
-	}
-
-	public void setProducts(AvailableProducts products) {
+	public ProductController(AvailableProducts products, Directors directors) {
 		this.products = products;
+		this.directors = directors;
+		
 	}
 	
 	public class Delete implements ActionListener{
@@ -57,15 +53,13 @@ public class ProductController {
 		
 		private JList productList;
 		private JList directorList;
-		private Directors directors;
 		private JTextField foodName;
 		private JTextField foodColor;
 		private JTextField foodWeight;
 		
-		public Add(JList productList, JList directorList, Directors directors, JTextField foodName, JTextField foodColor, JTextField foodWeight) {
+		public Add(JList productList, JList directorList, JTextField foodName, JTextField foodColor, JTextField foodWeight) {
 			this.productList = productList;
 			this.directorList = directorList;
-			this.directors = directors;
 			this.foodName = foodName;
 			this.foodColor = foodColor;
 			this.foodWeight = foodWeight;
@@ -75,7 +69,10 @@ public class ProductController {
 		@Override
 		public void actionPerformed(ActionEvent e){
 			int directorIndex = directorList.getSelectedIndex();
-			String directorName = directors.getDirectors().get(directorIndex).getName();
+			String directorName = "-";
+			if(directorIndex > 0) {
+				directorName = directors.getDirectors().get(directorIndex).getName();
+			}
 			try {
 				products.add(new Food(directorName, foodName.getText(), foodColor.getText(), Float.parseFloat(foodWeight.getText())));
 				

@@ -43,92 +43,117 @@ public class ProductManagementView {
 	private JTextField foodColor;
 	private JTextField foodWeight;
 	
-	
-	
-	public ProductManagementView(Directors directors, DirectorController directorController, AvailableProducts products, ProductController productController) {
+	public ProductManagementView(Directors directors, AvailableProducts products, ProductController productController) {
 		
+		//Initiate frame
 		frame = new JFrame();
 		frame.setSize(1200, 800);
 		
+		//Retreive its content panel
 		content = (JPanel)frame.getContentPane();
 		content.setLayout(new FlowLayout());
 		
-		if(directors.getDirectors().size() > 0) {
-			//Director panel
-			directorPanel = new JPanel();
-			directorPanel.setLayout(new BorderLayout());
-			//Label
-			JLabel label1 = new JLabel("Choose director");
-			directorPanel.add(label1, BorderLayout.NORTH);
-			//Director selector
-			directorList = new JList(directors.toStringArray());
-			directorList.setSelectedIndex(0);
-			directorScrollPane = new JScrollPane(directorList);
-			directorPanel.add(directorScrollPane, BorderLayout.SOUTH);
-			//Add director panel to frame
-			content.add(directorPanel);
-		}
+		//Add panels to the content panel
+		addDirectorPanel(directors, content);
+		addProductPanel(products, productController, content);
+		addFoodPanel(productController, content);		
+	
+		//Display the frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
+	/**
+	 * Procedure responsible for adding a list of director to the specified panel
+	 * @param directors, the model, containing a list of director
+	 * @param panel, the panel in question
+	 */
+	private void addDirectorPanel(Directors directors, JPanel panel) {
+		
+		//Director panel
+		directorPanel = new JPanel();
+		directorPanel.setLayout(new BorderLayout());
+		
+		//Label
+		JLabel label1 = new JLabel("Choose director");
+		directorPanel.add(label1, BorderLayout.NORTH);
+		
+		//Director selector
+		directorList = new JList(directors.toStringArray());
+		directorList.setSelectedIndex(0);
+		directorScrollPane = new JScrollPane(directorList);
+		directorPanel.add(directorScrollPane, BorderLayout.SOUTH);
+		
+		//Add director panel to panel
+		panel.add(directorPanel);
+	}
+	
+	private void addProductPanel(AvailableProducts products, ProductController productController, JPanel panel) {
 		
 		//Product panel
 		productPanel = new JPanel();
 		productPanel.setLayout(new BorderLayout());
+		
 		//Label
 		JLabel label2 = new JLabel("Choose product");
 		productPanel.add(label2, BorderLayout.NORTH);
+		
 		//Product selector
 		productList = new JList(products.toStringArray());
 		productScrollPane = new JScrollPane(productList);
 		productPanel.add(productScrollPane, BorderLayout.CENTER);
+		
 		//Delete button
 		deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(productController.new Delete(productList));
 		productPanel.add(deleteButton, BorderLayout.SOUTH);
-		//Add product panel to frame
-		content.add(productPanel);
+		
+		//Add product panel to panel
+		panel.add(productPanel);
+	}
+	
+	private void addFoodPanel(ProductController productController, JPanel panel) {
 		
 		//Add food panel
 		addFoodPanel = new JPanel();
 		addFoodPanel.setLayout(new BorderLayout());
+		
 		//Label
 		JLabel label3 = new JLabel("Add food");
 		addFoodPanel.add(label3, BorderLayout.NORTH);
+		
 		//Food field panel
 		addFoodPanelFields = new JPanel();
 		addFoodPanelFields.setLayout(new FlowLayout());
-		
-		
-		label3 = new JLabel("Name");
-		addFoodPanelFields.add(label3);
+				
+		//Name field
 		foodName = new JTextField();
-		foodName.setPreferredSize(new Dimension(100,20));
-		addFoodPanelFields.add(foodName);
+		addTextInputField("Name", foodName, addFoodPanelFields);
 		
-		label3 = new JLabel("Color");
-		addFoodPanelFields.add(label3);
+		//Color field
 		foodColor = new JTextField();
-		foodColor.setPreferredSize(new Dimension(100,20));
-		addFoodPanelFields.add(foodColor);
-		
-		label3 = new JLabel("Weight");
-		addFoodPanelFields.add(label3);
+		addTextInputField("Color", foodColor, addFoodPanelFields);
+				
+		//Weight field
 		foodWeight = new JTextField();
-		foodWeight.setPreferredSize(new Dimension(100,20));
-		addFoodPanelFields.add(foodWeight);
-		
+		addTextInputField("Weight", foodWeight, addFoodPanelFields);
+				
+		//Add fields to fields panel
 		addFoodPanel.add(addFoodPanelFields, BorderLayout.CENTER);
-		//Add food button
+		
+		//Add button
 		addFoodButton = new JButton("Add");
-		addFoodButton.addActionListener(productController.new Add(productList, directorList, directors, foodName, foodColor, foodWeight));
+		addFoodButton.addActionListener(productController.new Add(productList, directorList, foodName, foodColor, foodWeight));
 		addFoodPanel.add(addFoodButton, BorderLayout.SOUTH);
-		//Add product panel to frame
-		content.add(addFoodPanel);
 		
-		//JFormattedTextField(2424.50);
-	   // input.setValue(2424.50);
-	    //input.setColumns(20);
-		
+		//Add food panel to panel
+		panel.add(addFoodPanel);
+	}
 	
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+	private void addTextInputField(String name, JTextField field, JPanel panel) {
+		JLabel label = new JLabel(name);
+		panel.add(label);
+		field.setPreferredSize(new Dimension(100, 20));
+		panel.add(field);
 	}
 }
