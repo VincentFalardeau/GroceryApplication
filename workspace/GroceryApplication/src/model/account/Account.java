@@ -9,11 +9,11 @@ public abstract class Account {
 	private Date birthDate;
 	private String email;
 	
-	public Account(String firstName, String lastName, Date birthDate, String email) {
+	public Account(String firstName, String lastName, Date birthDate) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setBirthDate(birthDate);
-		this.setEmail(email);
+		this.setEmail(lastName + firstName + "@magasin.ca");
 	}
 	
 	public String getName() {

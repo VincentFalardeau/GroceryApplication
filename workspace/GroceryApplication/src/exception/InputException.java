@@ -1,5 +1,8 @@
 package exception;
 
+
+//Thrown when an input is found to be invalid, 
+//due to the context's constraints
 public class InputException extends Exception{
 	
 	private String message;

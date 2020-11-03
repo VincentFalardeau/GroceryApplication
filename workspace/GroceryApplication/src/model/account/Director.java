@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Director extends Account{
 	
-	public Director(String firstName, String lastName, Date birthDate, String email) {
-		super(firstName, lastName, birthDate, email);
+	public Director(String firstName, String lastName, Date birthDate) {
+		super(firstName, lastName, birthDate);
 	}
 	
 	@Override

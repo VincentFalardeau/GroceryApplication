@@ -1,15 +1,19 @@
 package view.component;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import model.product.Product;
 import model.product.Products;
 
 public class ProductListComponent extends JPanel{
@@ -36,6 +40,23 @@ public class ProductListComponent extends JPanel{
 				products.setSelectedIndex(list.getSelectedIndex());
 			}
 			
+		});
+		
+		//To view details on item double click
+		list.addMouseListener(new MouseAdapter() {
+			
+		    public void mouseClicked(MouseEvent e) {
+		    	
+		        if (e.getClickCount() == 2) {
+		        	
+		        	Product p = products.getSelectedProduct();
+		        	
+		        	if(p != null) {
+		        		//Show a message dialog containing the selected product's information
+						JOptionPane.showMessageDialog(null, p.toString(), "Details", 1);
+		        	}		        	
+		        }
+		    }
 		});
 		
 		JScrollPane sp = new JScrollPane(list);

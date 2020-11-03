@@ -11,8 +11,8 @@ public class Client extends Account{
 	private float balance;
 	private ArrayList<Product> favoriteProducts;
 	
-	public Client(String firstName, String lastName, Date birthDate, String email) {
-		super(firstName, lastName, birthDate, email);
+	public Client(String firstName, String lastName, Date birthDate) {
+		super(firstName, lastName, birthDate);
 		
 		setBalance(0.0f);
 		setFavoriteProducts(new ArrayList<Product>());
@@ -40,5 +40,10 @@ public class Client extends Account{
 
 	public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
 		this.favoriteProducts = favoriteProducts;
+	}
+	
+	@Override
+	public String toString() {
+		return "Client: " + super.toString();
 	}
 }

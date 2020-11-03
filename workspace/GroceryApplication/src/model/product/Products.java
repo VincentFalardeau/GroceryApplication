@@ -2,6 +2,7 @@ package model.product;
 
 import java.util.ArrayList;
 
+import model.account.Director;
 import view.ProductManagementView;
 
 public class Products {
@@ -73,6 +74,14 @@ public class Products {
 			return 0;//return 0 by default
 		}
 		return selectedIndex;
+	}
+	
+	//Gives the selected product object
+	public Product getSelectedProduct() {
+		if(selectedIndex < 0) {
+			return null;
+		}
+		return products.get(selectedIndex);
 	}
 
 	public void setSelectedIndex(int selectedIndex) {

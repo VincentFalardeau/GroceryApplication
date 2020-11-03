@@ -29,21 +29,25 @@ import model.product.Product;
 
 public class ProductManagementView extends JFrame{
 	
+	private JPanel content;
 	private Products products;
 	private ProductListComponent plc;
 	
 	
 	public ProductManagementView(Directors directors, Products products, ProductController productController) {
 		
-		this.setSize(1200, 800);
+		this.setSize(1200, 500);
+		this.setTitle("Product Management");
+		
+		//The content panel
+		content = (JPanel)this.getContentPane();
+		
 		
 		//The model
 		this.products = products;
 		products.setProductManagementView(this);
 		
-		//Retreive the content panel
-		JPanel content = (JPanel)this.getContentPane();
-		content.setLayout(new FlowLayout());
+		this.setLayout(new FlowLayout());
 		
 		//Create components
 		DirectorListComponent dlc = new DirectorListComponent(directors);
@@ -58,8 +62,7 @@ public class ProductManagementView extends JFrame{
 		content.add(plc);
 		content.add(deleteBtn);
 		content.add(apc);
-	
-		//Display the frame
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}

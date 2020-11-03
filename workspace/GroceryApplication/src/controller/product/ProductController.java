@@ -79,12 +79,12 @@ public class ProductController {
 			} catch(NumberFormatException nfe) {
 				
 				//Show a message dialog if weight is not a valid number
-				JOptionPane.showMessageDialog(null, "Weight must be a valid number");
+				JOptionPane.showMessageDialog(null, "Weight must be a valid number", "Error", 0);
 				
 			} catch(InputException ie) {
 				
 				//Show a message dialog if any input exception is thrown
-				JOptionPane.showMessageDialog(null, ie.getMessage());
+				JOptionPane.showMessageDialog(null, ie.getMessage(), "Error", 0);
 			}
 		}
 	}

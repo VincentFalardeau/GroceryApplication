@@ -54,7 +54,7 @@ public class Directors {
 		this.selectedIndex = selectedIndex;
 	}
 
-	//Gives the selected director objet
+	//Gives the selected director object
 	public Director getSelectedDirector() {
 		if(selectedIndex < 0) {
 			return null;
