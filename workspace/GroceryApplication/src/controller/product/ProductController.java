@@ -18,6 +18,7 @@ import model.account.Director;
 import model.account.Directors;
 import model.product.Products;
 import model.product.Food;
+import model.product.Furniture;
 import model.product.Product;
 
 public class ProductController {
@@ -39,13 +40,13 @@ public class ProductController {
 		}
 	}
 	
-	public class Add implements ActionListener{
+	public class AddFood implements ActionListener{
 		
 		private JTextField name;
 		private JTextField color;
 		private JTextField weight;
 		
-		public Add(JTextField name, JTextField color, JTextField weight) {
+		public AddFood(JTextField name, JTextField color, JTextField weight) {
 			this.name = name;
 			this.color = color;
 			this.weight = weight;
@@ -80,6 +81,50 @@ public class ProductController {
 				
 				//Show a message dialog if weight is not a valid number
 				JOptionPane.showMessageDialog(null, "Weight must be a valid number", "Error", 0);
+				
+			} catch(InputException ie) {
+				
+				//Show a message dialog if any input exception is thrown
+				JOptionPane.showMessageDialog(null, ie.getMessage(), "Error", 0);
+			}
+		}
+	}
+	
+	public class AddFurniture implements ActionListener{
+		
+		private JTextField type;
+		private JTextField price;
+		private JTextField height;
+		
+		public AddFurniture(JTextField type, JTextField price, JTextField height) {
+			this.type = type;
+			this.price = price;
+			this.height = height;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e){			
+			
+			try {
+				
+				//Get the selected director
+				Director d = directors.getSelectedDirector();
+				if(d == null) {
+					throw new InputException("Please select a director");
+				}
+				
+				//The specified type
+				String type = this.type.getText();
+				if(type.isEmpty()) {
+					throw new InputException("Please specify a type");
+				}
+
+				products.add(new Furniture(d.getName(), type, Float.parseFloat(this.price.getText()), Float.parseFloat(this.height.getText())));
+
+			} catch(NumberFormatException nfe) {
+				
+				//Show a message dialog if weight is not a valid number
+				JOptionPane.showMessageDialog(null, "Price/Height must be a valid number", "Error", 0);
 				
 			} catch(InputException ie) {
 				

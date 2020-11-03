@@ -31,7 +31,7 @@ public class ClientListComponent extends JPanel{
 	public ClientListComponent(Clients clients, ClientController clientController) {
 		
 		this.clients = clients;
-		clients.setClientListComponent(this);
+		clients.addClientListComponent(this);
 		this.setLayout(new BorderLayout());
 		
 		//Label
@@ -42,30 +42,10 @@ public class ClientListComponent extends JPanel{
 		list.setSelectedIndex(clients.getSelectedIndex());
 		
 		//To update the model on director selection
-		list.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				clients.setSelectedIndex(list.getSelectedIndex());
-			}
-					
-		});
+		list.addListSelectionListener(clientController.new Select(list));
 		
 		//To view details on item double click
-		list.addMouseListener(new MouseAdapter() {
-			
-		    public void mouseClicked(MouseEvent e) {
-		    	
-		        if (e.getClickCount() == 2) {
-		        	
-		        	Client c = clients.getSelectedClient();
-		        	
-		        	if(c != null) {
-		        		//Show a message dialog containing the selected product's information
-						JOptionPane.showMessageDialog(null, c.toString(), "Details", 1);
-		        	}		        	
-		        }
-		    }
-		});
+		list.addMouseListener(clientController.new Details());
 
 		JScrollPane sp = new JScrollPane(list);
 		this.add(sp, BorderLayout.CENTER);

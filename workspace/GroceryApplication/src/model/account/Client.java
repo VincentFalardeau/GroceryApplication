@@ -19,7 +19,17 @@ public class Client extends Account{
 	}
 	
 	public void addFavoriteProduct(Product product) {
-		this.favoriteProducts.add(product);
+		if(!favoriteProducts.contains(product)) {
+			this.favoriteProducts.add(product);
+		}
+		
+	}
+	
+	public void addMoney(float amount) {
+		balance += amount;
+		if(balance < 0.0f) {
+			balance = 0.0f;
+		}
 	}
 	
 	public void removeFavoriteProduct(Product product) {
@@ -40,6 +50,20 @@ public class Client extends Account{
 
 	public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
 		this.favoriteProducts = favoriteProducts;
+	}
+	
+	public String getDetails() {
+		String details = toString() + "\n";
+		
+		details += "Balance: " + balance + "$" + "\n";
+		
+		details += "Favorite products: " + "\n";
+		
+		for(Product p : favoriteProducts) {
+			details += "-" + p.toString() + "\n";
+		}
+		
+		return details;
 	}
 	
 	@Override

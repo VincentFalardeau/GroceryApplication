@@ -23,6 +23,7 @@ import model.account.Director;
 import model.account.Directors;
 import model.product.Products;
 import view.component.AddFoodComponent;
+import view.component.AddFurnitureComponent;
 import view.component.DirectorListComponent;
 import view.component.ProductListComponent;
 import model.product.Product;
@@ -36,7 +37,7 @@ public class ProductManagementView extends JFrame{
 	
 	public ProductManagementView(Directors directors, Products products, ProductController productController) {
 		
-		this.setSize(1200, 500);
+		this.setSize(1200, 300);
 		this.setTitle("Product Management");
 		
 		//The content panel
@@ -45,29 +46,29 @@ public class ProductManagementView extends JFrame{
 		
 		//The model
 		this.products = products;
-		products.setProductManagementView(this);
 		
 		this.setLayout(new FlowLayout());
 		
 		//Create components
 		DirectorListComponent dlc = new DirectorListComponent(directors);
-		plc = new ProductListComponent(products);
+		plc = new ProductListComponent(products, productController);
+		
 		AddFoodComponent apc = new AddFoodComponent(productController);
+		
+		AddFurnitureComponent apc2 = new AddFurnitureComponent(productController);
 		
 		//Create a delete button for the product list
 		JButton deleteBtn = new JButton("Delete");
 		deleteBtn.addActionListener(productController.new Delete());
+
 		
 		content.add(dlc);
 		content.add(plc);
 		content.add(deleteBtn);
 		content.add(apc);
+		content.add(apc2);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-	}
-
-	public void updateProducts() {
-		plc.update();
 	}
 }

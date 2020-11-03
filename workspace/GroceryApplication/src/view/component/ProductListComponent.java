@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controller.product.ProductController;
 import model.product.Product;
 import model.product.Products;
 
@@ -21,13 +22,14 @@ public class ProductListComponent extends JPanel{
 	Products products;
 	JList list;
 	
-	public ProductListComponent(Products products) {
+	public ProductListComponent(Products products, ProductController productController) {
 		
 		this.products = products;
+		products.addProductListComponent(this);
 		this.setLayout(new BorderLayout());
 		
 		//Label
-		this.add(new JLabel("Choose product"), BorderLayout.NORTH);
+		this.add(new JLabel("Products"), BorderLayout.NORTH);
 		
 		//Make the list from the model
 		list = new JList(products.toStringArray());

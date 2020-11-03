@@ -4,40 +4,37 @@ import java.util.ArrayList;
 
 import model.account.Director;
 import view.ProductManagementView;
+import view.component.ProductListComponent;
 
 public class Products {
 	
 	private ArrayList<Product> products;
-	//The view displaying the products
-	private ProductManagementView pmv;
+	//The views displaying the products
+	private ArrayList<ProductListComponent> plcs;
 	private int selectedIndex;
 	
 	public Products() {
 		products = new ArrayList<Product>();
-	}
-	
-	public Products(ArrayList<Product> products) {
-
-		this.setProducts(products);
+		plcs = new ArrayList<ProductListComponent>();
 	}
 
 	public void add(Product product) {
 		products.add(product);
-		updatePmv();
+		update();
 	}
 
 	//Delete the current selectedIndex if not null
 	public void deleteSelected() {
 		if(this.selectedIndex >= 0) {
 			products.remove(this.selectedIndex);
-			updatePmv();
+			update();
 		}
 	}
 	
 	//Update the view displaying the model
-	private void updatePmv() {
-		if(this.pmv != null) {
-			pmv.updateProducts();
+	private void update() {
+		for(ProductListComponent plc : plcs) {
+			plc.update();
 		}
 		
 	}
@@ -65,8 +62,8 @@ public class Products {
 		this.products = products;
 	}
 
-	public void setProductManagementView(ProductManagementView pmv) {
-		this.pmv = pmv;
+	public void addProductListComponent(ProductListComponent plc) {
+		this.plcs.add(plc);
 	}
 
 	public int getSelectedIndex() {

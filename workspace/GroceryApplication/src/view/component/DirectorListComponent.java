@@ -18,7 +18,7 @@ public class DirectorListComponent extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		//Label
-		this.add(new JLabel("Choose director"), BorderLayout.NORTH);
+		this.add(new JLabel("Directors"), BorderLayout.NORTH);
 		
 		//Make the list from the model
 		JList list = new JList(directors.toStringArray());

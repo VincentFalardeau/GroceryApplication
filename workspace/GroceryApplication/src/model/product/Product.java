@@ -1,6 +1,6 @@
 package model.product;
 
-public abstract class Product {
+public abstract class Product{
 	
 	private String directorName;
 	
@@ -20,4 +20,7 @@ public abstract class Product {
 	public String toString() {
 		return "Added by director: " + directorName;
 	}
+
+	
+	
 }

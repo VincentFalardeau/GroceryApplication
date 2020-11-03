@@ -6,7 +6,7 @@ public class Furniture extends Product{
 	private float price;
 	private float height;
 	
-	public Furniture(String directorName, String type, float price, float height) {
+	public Furniture(String directorName, String type, float price, float height){
 		super(directorName);
 		
 		this.setType(type);
@@ -16,7 +16,7 @@ public class Furniture extends Product{
 	
 	@Override
 	public String toString() {
-		return super.toString() + " - Furniture, type: " + type + ", price: " + price + ", height: " + height;
+		return "Furniture, type: " + type + ", price: " + price + ", height: " + height + " - " + super.toString();
 		
 	}
 

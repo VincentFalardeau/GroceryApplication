@@ -9,10 +9,10 @@ public class Clients {
 	private ArrayList<Client> clients;
 	private int selectedIndex;
 	private String filter;
-	private ClientListComponent clc;
+	private ArrayList<ClientListComponent> clc;
 	
 	public Clients() {
-		
+		clc = new ArrayList<ClientListComponent>();
 		setClients(new ArrayList<Client>());
 		filter = "";
 	}
@@ -65,7 +65,10 @@ public class Clients {
 	public void setFilter(String filter) {
 		this.filter = filter;
 		if(clc != null) {
-			clc.update();
+			for(ClientListComponent clc : this.clc) {
+				clc.update();
+			}
+			
 		}
 		
 	}
@@ -78,7 +81,7 @@ public class Clients {
 		this.clients = clients;
 	}
 
-	public void setClientListComponent(ClientListComponent clc) {
-		this.clc = clc;
+	public void addClientListComponent(ClientListComponent clc) {
+		this.clc.add(clc);
 	}
 }

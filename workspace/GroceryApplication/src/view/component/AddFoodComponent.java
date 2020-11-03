@@ -45,7 +45,7 @@ public class AddFoodComponent extends JPanel {
 		
 		//Add button
 		JButton addBtn = new JButton("Add");
-		addBtn.addActionListener(productController.new Add(name, color, weight));
+		addBtn.addActionListener(productController.new AddFood(name, color, weight));
 		
 		this.add(addBtn, BorderLayout.SOUTH);
 	}
