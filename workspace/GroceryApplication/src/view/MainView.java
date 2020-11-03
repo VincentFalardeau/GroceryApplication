@@ -94,7 +94,7 @@ public class MainView extends JFrame{
 		
 		ProductManagementView pmv = new ProductManagementView(directors, products, productController);
 		
-		ClientManagementView cmv = new ClientManagementView(clients, clientController);
+		//ClientManagementView cmv = new ClientManagementView(clients, grocers, clientController, grocerController);
 		
 		this.setSize(800, 800);
 		this.setTitle("Information");

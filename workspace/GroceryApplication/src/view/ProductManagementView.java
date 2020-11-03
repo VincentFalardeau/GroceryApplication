@@ -37,7 +37,7 @@ public class ProductManagementView extends JFrame{
 	
 	public ProductManagementView(Directors directors, Products products, ProductController productController) {
 		
-		this.setSize(1200, 300);
+		this.setSize(1200, 500);
 		this.setTitle("Product Management");
 		
 		//The content panel
@@ -57,7 +57,7 @@ public class ProductManagementView extends JFrame{
 		
 		AddFurnitureComponent apc2 = new AddFurnitureComponent(productController);
 		
-		//Create a delete button for the product list
+		//Create a delete button for the food list
 		JButton deleteBtn = new JButton("Delete");
 		deleteBtn.addActionListener(productController.new Delete());
 
@@ -66,7 +66,6 @@ public class ProductManagementView extends JFrame{
 		content.add(plc);
 		content.add(deleteBtn);
 		content.add(apc);
-		content.add(apc2);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
