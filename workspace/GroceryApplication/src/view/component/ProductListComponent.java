@@ -28,6 +28,7 @@ public class ProductListComponent extends JPanel{
 		//Make the list from the model
 		list = new JList(products.toStringArray());
 		list.setSelectedIndex(products.getSelectedIndex());
+		
 		//To update the model on product selection
 		list.addListSelectionListener(new ListSelectionListener() {
 			@Override
@@ -36,6 +37,7 @@ public class ProductListComponent extends JPanel{
 			}
 			
 		});
+		
 		JScrollPane sp = new JScrollPane(list);
 		this.add(sp, BorderLayout.SOUTH);
 	}
@@ -51,18 +53,4 @@ public class ProductListComponent extends JPanel{
 		}
 		list.setModel(dlm);
 	}
-	
-//	//Product selector
-//	productList = new JList(products.toStringArray());
-//	productScrollPane = new JScrollPane(productList);
-//	productPanel.add(productScrollPane, BorderLayout.CENTER);
-//	
-//	//Delete button
-//	deleteButton = new JButton("Delete");
-//	deleteButton.addActionListener(productController.new Delete(productList));
-//	productPanel.add(deleteButton, BorderLayout.SOUTH);
-//	
-//	//Add product panel to panel
-//	panel.add(productPanel);
-//}
 }

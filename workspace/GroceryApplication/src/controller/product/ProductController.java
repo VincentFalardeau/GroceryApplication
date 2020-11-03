@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
+import exception.InputException;
+import model.account.Director;
 import model.account.Directors;
 import model.product.Products;
 import model.product.Food;
@@ -39,33 +41,50 @@ public class ProductController {
 	
 	public class Add implements ActionListener{
 		
-		private JList productList;
-		private JList directorList;
-		private JTextField foodName;
-		private JTextField foodColor;
-		private JTextField foodWeight;
+		private JTextField name;
+		private JTextField color;
+		private JTextField weight;
 		
-		public Add(JList directorList, JTextField foodName, JTextField foodColor, JTextField foodWeight) {
-			this.productList = productList;
-			this.directorList = directorList;
-			this.foodName = foodName;
-			this.foodColor = foodColor;
-			this.foodWeight = foodWeight;
-			
+		public Add(JTextField name, JTextField color, JTextField weight) {
+			this.name = name;
+			this.color = color;
+			this.weight = weight;
 		}
 		
 		@Override
-		public void actionPerformed(ActionEvent e){
-			int directorIndex = directorList.getSelectedIndex();
-			String directorName = "-";
-			if(directorIndex > 0) {
-				directorName = directors.getDirectors().get(directorIndex).getName();
-			}
+		public void actionPerformed(ActionEvent e){			
+			
 			try {
-				products.add(new Food(directorName, foodName.getText(), foodColor.getText(), Float.parseFloat(foodWeight.getText())));
+				
+				//Get the selected director
+				Director d = directors.getSelectedDirector();
+				if(d == null) {
+					throw new InputException("Please select a director");
+				}
+				
+				//The specified name
+				String name = this.name.getText();
+				if(name.isEmpty()) {
+					throw new InputException("Please specify a name");
+				}
+				
+				//The specified color
+				String color = this.color.getText();
+				if(color.isEmpty()) {
+					throw new InputException("Please specify a color");
+				}
+				
+				products.add(new Food(d.getName(), name, color, Float.parseFloat(weight.getText())));
 
 			} catch(NumberFormatException nfe) {
+				
+				//Show a message dialog if weight is not a valid number
 				JOptionPane.showMessageDialog(null, "Weight must be a valid number");
+				
+			} catch(InputException ie) {
+				
+				//Show a message dialog if any input exception is thrown
+				JOptionPane.showMessageDialog(null, ie.getMessage());
 			}
 		}
 	}

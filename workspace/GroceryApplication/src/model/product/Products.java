@@ -25,6 +25,7 @@ public class Products {
 		updatePmv();
 	}
 
+	//Delete the current selectedIndex if not null
 	public void deleteSelected() {
 		if(this.selectedIndex >= 0) {
 			products.remove(this.selectedIndex);
@@ -40,6 +41,8 @@ public class Products {
 		
 	}
 	
+	//Converts the product list in a String array ready for 
+	//information displaying
 	public String[] toStringArray() {
 		
 		String[] array = new String[products.size()];
@@ -67,7 +70,7 @@ public class Products {
 
 	public int getSelectedIndex() {
 		if(selectedIndex < 0) {
-			return 0;
+			return 0;//return 0 by default
 		}
 		return selectedIndex;
 	}
