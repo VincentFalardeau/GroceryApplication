@@ -13,39 +13,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 
-import model.data.AvailableProducts;
-import model.data.Directors;
+import model.account.Directors;
+import model.product.Products;
 import model.product.Food;
 import model.product.Product;
 
 public class ProductController {
 	
 	//Models
-	private AvailableProducts products;
+	private Products products;
 	private Directors directors;
 	
-	public ProductController(AvailableProducts products, Directors directors) {
+	public ProductController(Products products, Directors directors) {
 		this.products = products;
-		this.directors = directors;
-		
+		this.directors = directors;	
 	}
 	
 	public class Delete implements ActionListener{
 		
-		private JList productList;
-		
-		public Delete(JList productList) {
-			this.productList = productList;
-		}
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			//Delete the selected element from the model
-			int index = productList.getSelectedIndex();
-			products.remove(index);
-			
-			refresh(productList);
+			products.deleteSelected();
 		}
 	}
 	
@@ -57,7 +45,7 @@ public class ProductController {
 		private JTextField foodColor;
 		private JTextField foodWeight;
 		
-		public Add(JList productList, JList directorList, JTextField foodName, JTextField foodColor, JTextField foodWeight) {
+		public Add(JList directorList, JTextField foodName, JTextField foodColor, JTextField foodWeight) {
 			this.productList = productList;
 			this.directorList = directorList;
 			this.foodName = foodName;
@@ -75,25 +63,10 @@ public class ProductController {
 			}
 			try {
 				products.add(new Food(directorName, foodName.getText(), foodColor.getText(), Float.parseFloat(foodWeight.getText())));
-				
-				refresh(productList);
+
 			} catch(NumberFormatException nfe) {
 				JOptionPane.showMessageDialog(null, "Weight must be a valid number");
 			}
-			
-			
-			
 		}
-	}
-	
-	private void refresh(JList productList) {
-		//Update the product list
-		DefaultListModel dlm = new DefaultListModel();
-		int i = 0;
-		for(String str : products.toStringArray()) {
-			dlm.add(i,str);
-			i++;
-		}
-		productList.setModel(dlm);
 	}
 }

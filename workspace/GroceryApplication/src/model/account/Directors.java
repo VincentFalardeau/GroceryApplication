@@ -1,11 +1,11 @@
-package model.data;
+package model.account;
 
 import java.util.ArrayList;
 
-import model.account.Director;
+import view.ProductManagementView;
 
 public class Directors {
-	
+
 	private ArrayList<Director> directors;
 	
 	public Directors() {
