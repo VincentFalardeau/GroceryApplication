@@ -21,14 +21,15 @@ import model.product.Food;
 import model.product.Furniture;
 import model.product.Product;
 
-public class ProductController {
+public class ProductController extends ModelDataController {
 	
 	//Models
 	private ModelData products;
 	private ModelData directors;
 	
 	public ProductController(ModelData products, ModelData directors) {
-		this.products = products;
+		super(products);
+		this.products = super.modelData;
 		this.directors = directors;	
 	}
 	

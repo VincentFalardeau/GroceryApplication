@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ModelDataController;
+import controller.ProductController;
 import model.data.ModelData;
+import view.product.ProductEditView;
 
 
 public class ProductManagementPage extends JFrame {
@@ -28,14 +30,9 @@ public class ProductManagementPage extends JFrame {
 		content.add(directorsView);
 		
 		//Product list
-		ModelDataController productsController = new ModelDataController(products);
-		ModelDataEditView productsView = new ModelDataEditView(products, productsController, directors);
-		content.add(productsView);
-		
-//		//Create a delete button for the food list
-//		JButton deleteBtn = new JButton("Delete");
-//		deleteBtn.addActionListener(productController.new Delete());
-	
+		ProductController productsController = new ProductController(products, directors);
+		ProductEditView productsView = new ProductEditView(products, productsController);
+		content.add(productsView);	
 
 		this.setVisible(true);
 	}

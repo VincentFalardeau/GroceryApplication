@@ -14,6 +14,7 @@ import model.data.ModelData;
 import model.product.Food;
 import model.product.Furniture;
 import model.product.Product;
+import view.AccountManagementPage;
 import view.InformationPage;
 import view.ModelDataListView;
 import view.ProductManagementPage;
@@ -82,7 +83,10 @@ public class Main {
 		
 		ProductManagementPage pmp = new ProductManagementPage(products, directors);
 		
+		AccountManagementPage cmp = new AccountManagementPage(accounts);
+		
 		InformationPage ip = new InformationPage(accounts);
+		
 		
 		
 //		JFrame frame = new JFrame();

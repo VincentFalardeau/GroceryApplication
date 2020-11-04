@@ -12,9 +12,4 @@ public class Employee extends Account{
 	public String toString() {
 		return "Employee, " + super.toString();
 	}
-	
-	@Override
-	public String getDetails() {
-		return this.toString();
-	}
 }
