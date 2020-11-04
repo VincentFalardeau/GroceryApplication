@@ -14,6 +14,7 @@ import model.data.ModelData;
 import model.product.Food;
 import model.product.Furniture;
 import model.product.Product;
+import view.InformationPage;
 import view.ModelDataListView;
 
 
@@ -67,37 +68,50 @@ public class Main {
 		clients.add(c3);
 		clients.add(c4);
 		
-		JFrame frame = new JFrame();
-		frame.setSize(1200, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//Create account model
+		ModelData accounts = new ModelData();
+		accounts.add(d1);
+		accounts.add(d2);
+		accounts.add(e1);
+		accounts.add(e2);
+		accounts.add(c1);
+		accounts.add(c2);
+		accounts.add(c3);
+		accounts.add(c4);
 		
-		JPanel content = (JPanel)frame.getContentPane();
-		content.setLayout(new FlowLayout());
+		InformationPage ip = new InformationPage(accounts);
 		
-		ModelDataController directorsController = new ModelDataController(directors);
-		ModelDataListView directorsView = new ModelDataListView(directors, directorsController);
+//		JFrame frame = new JFrame();
+//		frame.setSize(1200, 800);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		JPanel content = (JPanel)frame.getContentPane();
+//		content.setLayout(new FlowLayout());
+//		
+//		ModelDataController directorsController = new ModelDataController(directors);
+//		ModelDataListView directorsView = new ModelDataListView(directors, directorsController);
+//		
+//		ModelDataController employeesController = new ModelDataController(employees);
+//		ModelDataListView employeesView = new ModelDataListView(employees, employeesController);
+//		
+//		content.add(directorsView);
+//		content.add(employeesView);
+//		
+//		frame.setVisible(true);
 		
-		ModelDataController employeesController = new ModelDataController(employees);
-		ModelDataListView employeesView = new ModelDataListView(employees, employeesController);
-		
-		content.add(directorsView);
-		content.add(employeesView);
-		
-		frame.setVisible(true);
-		
-		JFrame frame2 = new JFrame();
-		frame2.setSize(1200, 800);
-		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JPanel content2 = (JPanel)frame2.getContentPane();
-		content2.setLayout(new FlowLayout());
-		
-		ModelDataController directorsController2 = new ModelDataController(directors);
-		ModelDataListView directorsView2 = new ModelDataListView(directors, directorsController);
-
-		
-		content2.add(directorsView2);
-		
-		frame2.setVisible(true);
+//		JFrame frame2 = new JFrame();
+//		frame2.setSize(1200, 800);
+//		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		JPanel content2 = (JPanel)frame2.getContentPane();
+//		content2.setLayout(new FlowLayout());
+//		
+//		ModelDataController directorsController2 = new ModelDataController(directors);
+//		ModelDataListView directorsView2 = new ModelDataListView(directors, directorsController);
+//
+//		
+//		content2.add(directorsView2);
+//		
+//		frame2.setVisible(true);
 	}
 }

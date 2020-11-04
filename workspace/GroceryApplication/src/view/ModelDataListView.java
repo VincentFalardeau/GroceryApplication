@@ -20,11 +20,15 @@ public class ModelDataListView extends JPanel implements Updatable, IDataList {
 	ModelData modelData;
 	JList list;
 	
-	public ModelDataListView(ModelData modelData, ModelDataController modelDataController) {
+	
+	public ModelDataListView(ModelData modelData, ModelDataController modelDataController, String title) {
 		modelData.addView(this);
 		
 		this.modelData = modelData;
 		this.setLayout(new BorderLayout());
+		
+		//Label
+		this.add(new JLabel(title), BorderLayout.NORTH);
 		
 		//Make the list from the model
 		list = new JList(modelData.toStringArray());
