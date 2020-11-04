@@ -19,11 +19,6 @@ public class Food extends Product{
 		return "Food, name: " + name + ", color: " + color + ", weight: " + weight + " " + super.toString();
 		
 	}
-	
-	@Override
-	public String getDetails() {
-		return this.toString();
-	}
 
 	public String getName() {
 		return name;

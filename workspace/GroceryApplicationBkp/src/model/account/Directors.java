@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import view.ProductManagementView;
 
-public class Directors {
+public class Directors{
 
 	private ArrayList<Director> directors;
 	private int selectedIndex;

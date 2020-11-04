@@ -92,6 +92,7 @@ public class MainView extends JFrame{
 	public MainView(Clients clients, Products products, Directors directors, Grocers grocers, 
 			ClientController clientController, ProductController productController, GrocerController grocerController) {
 		
+		
 		ProductManagementView pmv = new ProductManagementView(directors, products, productController);
 		
 		//ClientManagementView cmv = new ClientManagementView(clients, grocers, clientController, grocerController);
@@ -106,9 +107,10 @@ public class MainView extends JFrame{
 		JLabel info = new JLabel("*Double click on list item to view details");
 		
 		GrocerListComponent elc = new GrocerListComponent(grocers, grocerController);
-		ClientListComponent clc = new ClientListComponent(clients, clientController);
+		
 		ProductListComponent plc = new ProductListComponent(products, productController);
 		MoneyComponent mp = new MoneyComponent(clientController);
+		ClientListComponent clc = new ClientListComponent(clients, clientController);
 		
 		
 		JButton addToFavorites = new JButton("Add to favorites");

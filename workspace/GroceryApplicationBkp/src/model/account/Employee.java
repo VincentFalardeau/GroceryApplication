@@ -2,7 +2,7 @@ package model.account;
 
 import java.util.Date;
 
-public class Employee extends Account{
+public class Employee extends Account implements Grocer{
 	
 	public Employee(String firstName, String lastName, Date birthDate) {
 		super(firstName, lastName, birthDate);
@@ -11,10 +11,5 @@ public class Employee extends Account{
 	@Override
 	public String toString() {
 		return "Employee, " + super.toString();
-	}
-	
-	@Override
-	public String getDetails() {
-		return this.toString();
 	}
 }

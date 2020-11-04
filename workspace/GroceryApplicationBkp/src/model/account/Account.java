@@ -2,9 +2,7 @@ package model.account;
 
 import java.util.Date;
 
-import model.data.IData;
-
-public abstract class Account implements IData{
+public abstract class Account {
 	
 	private String firstName;
 	private String lastName;
@@ -24,7 +22,7 @@ public abstract class Account implements IData{
 	
 	@Override
 	public String toString() {
-		return "name: " + getName() + ", birth date: " + birthDate.toString() + ", email: " + email;
+		return "name:" + getName() + ", birth date:" + birthDate.toString() + ", email:" + email;
 	}
 
 	public String getFirstName() {

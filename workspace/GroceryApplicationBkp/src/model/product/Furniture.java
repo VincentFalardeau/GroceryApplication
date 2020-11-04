@@ -19,17 +19,8 @@ public class Furniture extends Product{
 		return "Furniture, type: " + type + ", price: " + price + ", height: " + height + " - " + super.toString();
 		
 	}
-	
-	@Override
-	public String getDetails() {
-		return this.toString();
-	}
 
 	public String getType() {
-		return type;
-	}
-	
-	public String getName() {
 		return type;
 	}
 

@@ -24,6 +24,7 @@ import model.account.Directors;
 import model.product.Products;
 import view.component.AddFoodComponent;
 import view.component.AddFurnitureComponent;
+import view.component.ClientListComponent;
 import view.component.DirectorListComponent;
 import view.component.ProductListComponent;
 import model.product.Product;
@@ -61,7 +62,6 @@ public class ProductManagementView extends JFrame{
 		JButton deleteBtn = new JButton("Delete");
 		deleteBtn.addActionListener(productController.new Delete());
 
-		
 		content.add(dlc);
 		content.add(plc);
 		content.add(deleteBtn);

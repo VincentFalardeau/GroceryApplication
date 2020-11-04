@@ -1,8 +1,6 @@
 package model.product;
 
-import model.data.IData;
-
-public abstract class Product implements IData{
+public abstract class Product{
 	
 	private String directorName;
 	
