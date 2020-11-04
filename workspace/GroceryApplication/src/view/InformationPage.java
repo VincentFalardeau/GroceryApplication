@@ -13,8 +13,8 @@ import controller.AccountController;
 import controller.ModelDataController;
 import controller.ProductController;
 import model.data.ModelData;
+import view.account.MoneyComponent;
 import view.product.FavoriteProductView;
-import view.product.MoneyComponent;
 
 
 

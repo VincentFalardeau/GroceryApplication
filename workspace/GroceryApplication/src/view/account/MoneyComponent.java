@@ -1,4 +1,4 @@
-package view.product;
+package view.account;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
