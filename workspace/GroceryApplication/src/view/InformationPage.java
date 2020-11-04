@@ -15,13 +15,11 @@ import model.data.ModelData;
 
 public class InformationPage extends JFrame{
 	
-	public InformationPage(ModelData modelData) {
+	public InformationPage(ModelData accounts) {
 		
 		this.setSize(1000, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Information");
-		
-		
 		
 		//The content panel
 		JPanel content = (JPanel)this.getContentPane();
@@ -31,8 +29,8 @@ public class InformationPage extends JFrame{
 		content.add(new JLabel("*Double click on item to view details"), BorderLayout.NORTH);
 		
 		//Add views
-		ModelDataController modelDataController = new ModelDataController(modelData);
-		ModelDataListView accountView = new ModelDataListView(modelData, modelDataController, "Accounts");
+		ModelDataController accountsController = new ModelDataController(accounts);
+		ModelDataListView accountView = new ModelDataListView(accounts, accountsController, "Accounts");
 		content.add(accountView, BorderLayout.CENTER);
 		
 		this.setVisible(true);

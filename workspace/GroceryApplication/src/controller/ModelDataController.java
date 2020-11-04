@@ -9,12 +9,16 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import exception.InputException;
 import model.account.Client;
+import model.account.Director;
 import model.data.ModelData;
+import model.product.Food;
 import model.data.IData;
 
 public class ModelDataController {
@@ -38,6 +42,8 @@ public class ModelDataController {
 			modelData.setSelectedIndex(list.getSelectedIndex());
 		}
 	}
+	
+	
 	
 	public class Details extends MouseAdapter{
 		
@@ -67,6 +73,15 @@ public class ModelDataController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			modelData.setFilter(filter.getText());
+			
+		}
+	}
+	
+	public class Delete implements ActionListener{
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			modelData.deleteSelected();
 			
 		}
 	}

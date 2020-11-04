@@ -16,6 +16,7 @@ import model.product.Furniture;
 import model.product.Product;
 import view.InformationPage;
 import view.ModelDataListView;
+import view.ProductManagementPage;
 
 
 public class Main {
@@ -79,7 +80,10 @@ public class Main {
 		accounts.add(c3);
 		accounts.add(c4);
 		
+		ProductManagementPage pmp = new ProductManagementPage(products, directors);
+		
 		InformationPage ip = new InformationPage(accounts);
+		
 		
 //		JFrame frame = new JFrame();
 //		frame.setSize(1200, 800);

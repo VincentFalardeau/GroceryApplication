@@ -30,6 +30,14 @@ public class ModelData extends ArrayList<IData> {
 		this.filter = "";
 	}
 	
+	@Override
+	public boolean add(IData x) {
+		boolean added =  super.add(x);
+		update();
+		return added;
+		
+	}
+	
 	//Gives a string array representing the array list.
 	public String[] toStringArray() {
 		
@@ -77,8 +85,7 @@ public class ModelData extends ArrayList<IData> {
 			}
 			else {
 				this.selectedIndex = 0;
-			}
-			
+			}			
 			update();
 		}
 	}
