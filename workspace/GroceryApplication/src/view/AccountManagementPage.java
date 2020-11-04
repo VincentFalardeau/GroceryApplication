@@ -12,30 +12,19 @@ import view.account.AccountEditView;
 
 public class AccountManagementPage extends JFrame{
 	
-	public AccountManagementPage(ModelData accounts) {
+	public AccountManagementPage(ModelData accounts, AccountController accountController) {
 		
 		this.setSize(1000, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Client Management");
+		this.setTitle("Account Management");
 
 		//The content panel
 		JPanel content = (JPanel)this.getContentPane();
 		content.setLayout(new FlowLayout());
 		
 		//Account list
-		AccountController accountsController = new AccountController(accounts);
-		AccountEditView aev = new AccountEditView(accounts, accountsController);
+		AccountEditView aev = new AccountEditView(accounts, accountController);
 		content.add(aev);
-
-		//Employee selector
-		//ModelDataController directorsController = new ModelDataController(directors);
-		//ModelDataListView directorsView = new ModelDataListView(directors, directorsController, "Choose director");
-		//content.add(directorsView);
-
-		//Product list
-		//ModelDataController productsController = new ModelDataController(products);
-		//ProductEditView productsView = new ProductEditView(products, productsController, directors);
-		//content.add(productsView);
 
 		this.setVisible(true);
 	}

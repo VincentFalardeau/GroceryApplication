@@ -4,7 +4,9 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.AccountController;
 import controller.ModelDataController;
+import controller.ProductController;
 import model.account.Client;
 
 import model.account.Director;
@@ -33,6 +35,7 @@ public class Main {
 		
 		//Create employee model
 		Employee e1 = new Employee("Jackie", "Chan", new Date(1970, 12, 1));
+		e1.addMoney(500);
 		Employee e2 = new Employee("Terry", "DeMonte", new Date(1975, 5, 9));
 		ModelData employees = new ModelData();
 		employees.add(e1);
@@ -75,11 +78,15 @@ public class Main {
 		accounts.add(c4);
 		accounts.addLinkedModelData(directors);
 		
-		ProductManagementPage pmp = new ProductManagementPage(products, directors);
+		AccountController accountController = new AccountController(accounts, products);
+		ProductController productController = new ProductController(products, accounts);
+		ModelDataController directorController = new ModelDataController(directors);
 		
-		AccountManagementPage cmp = new AccountManagementPage(accounts);
+		ProductManagementPage pmp = new ProductManagementPage(products, productController, directors, directorController);
 		
-		InformationPage ip = new InformationPage(accounts);
+		AccountManagementPage cmp = new AccountManagementPage(accounts, accountController);
+		
+		InformationPage ip = new InformationPage(accounts, accountController, products, productController);
 		
 		
 		

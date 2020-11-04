@@ -14,7 +14,7 @@ import view.product.ProductEditView;
 
 public class ProductManagementPage extends JFrame {
 
-	public ProductManagementPage(ModelData products, ModelData directors) {
+	public ProductManagementPage(ModelData products, ProductController productController, ModelData directors, ModelDataController directorsController) {
 		
 		this.setSize(800, 800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,13 +25,11 @@ public class ProductManagementPage extends JFrame {
 		content.setLayout(new FlowLayout());
 		
 		//Director selector
-		ModelDataController directorsController = new ModelDataController(directors);
 		ModelDataListView directorsView = new ModelDataListView(directors, directorsController, "Choose director");
 		content.add(directorsView);
 		
 		//Product list
-		ProductController productsController = new ProductController(products, directors);
-		ProductEditView productsView = new ProductEditView(products, productsController);
+		ProductEditView productsView = new ProductEditView(products, productController);
 		content.add(productsView);	
 
 		this.setVisible(true);
