@@ -14,7 +14,7 @@ public class AccountManagementPage extends JFrame{
 	
 	public AccountManagementPage(ModelData accounts) {
 		
-		this.setSize(1000, 800);
+		this.setSize(1000, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Client Management");
 

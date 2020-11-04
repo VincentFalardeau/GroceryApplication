@@ -5,10 +5,13 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import exception.InputException;
 import model.account.Client;
+import model.account.Director;
+import model.account.Employee;
 import model.data.IData;
 import model.data.ModelData;
 import model.product.Food;
@@ -28,11 +31,13 @@ public class AccountController extends ModelDataController {
 			private JTextField firstName;
 			private JTextField lastName;
 			private JTextField birthDate;
+			private JRadioButton[] rbs;
 			
-			public Add(JTextField firstName, JTextField lastName, JTextField birthDate) {
+			public Add(JTextField firstName, JTextField lastName, JTextField birthDate, JRadioButton[] rbs) {
 				this.firstName = firstName;
 				this.lastName = lastName;
 				this.birthDate = birthDate;
+				this.rbs = rbs;
 			}
 			
 			@Override
@@ -51,7 +56,15 @@ public class AccountController extends ModelDataController {
 					}
 					Date birthDate = new Date(this.birthDate.getText());
 					
-					accounts.add(new Client(firstName, lastName, birthDate));
+					if(rbs[0].isSelected()) {
+						accounts.add(new Client(firstName, lastName, birthDate));
+					}
+					else if(rbs[1].isSelected()) {
+						accounts.add(new Employee(firstName, lastName, birthDate));
+					}
+					else if(rbs[2].isSelected()) {
+						accounts.add(new Director(firstName, lastName, birthDate));
+					}
 
 				} catch(IllegalArgumentException iae) {
 					

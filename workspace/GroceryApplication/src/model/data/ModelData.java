@@ -14,11 +14,14 @@ public class ModelData extends ArrayList<IData> {
 	private ArrayList<IDataList> views;
 	//So that the items can be filtered
 	private String filter;
+	//The model datas to update when the current one changes
+	private ArrayList<ModelData> linkedModelDatas;
 	
 	public ModelData(){
 		super();
 		this.views = new ArrayList<IDataList>();
 		this.filter = "";
+		this.linkedModelDatas = new ArrayList<ModelData>(); 
 	}
 	
 	public ModelData(ArrayList<IData> l) {
@@ -28,12 +31,16 @@ public class ModelData extends ArrayList<IData> {
 		}
 		this.views = new ArrayList<IDataList>();
 		this.filter = "";
+		this.linkedModelDatas = new ArrayList<ModelData>(); 
 	}
 	
 	@Override
 	public boolean add(IData x) {
 		boolean added =  super.add(x);
 		update();
+		for(ModelData md : linkedModelDatas) {
+			md.add(x);
+		}
 		return added;
 		
 	}
@@ -50,7 +57,9 @@ public class ModelData extends ArrayList<IData> {
 	
 			String name = t.getName();
 			//If the client's name matches the filter
-			if(name.length() > 0 && name.length() >= filter.length() && name.substring(0, filter.length()).equals(filter)) {
+			if(name.length() > 0 && 
+					name.length() >= filter.length() && 
+					name.substring(0, filter.length()).equals(filter)) {
 				array[i] = t.toString();
 			}
 			else {
@@ -79,7 +88,12 @@ public class ModelData extends ArrayList<IData> {
 	//Deletes the selected index
 	public void deleteSelected() {
 		if(selectedIndex >= 0) {
+			//Delete the selected object in the linked models
+			for(ModelData md : linkedModelDatas) {
+				md.deleteSelected();
+			}
 			this.remove(selectedIndex);
+			
 			if(this.size() == 0) {
 				this.selectedIndex = -1;
 			}
@@ -105,6 +119,14 @@ public class ModelData extends ArrayList<IData> {
 		for(IDataList v : views) {
 			v.updateSelectedIndex();
 		}
+		//If the selected object is in a linkedModelData, select it there
+		for(ModelData md : linkedModelDatas) {
+			int index = md.indexOf(this.getSelected());
+			if(index >= 0) {
+				md.setSelectedIndex(index);
+			}
+			
+		}
 	}
 
 	public int getSelectedIndex() {
@@ -115,5 +137,9 @@ public class ModelData extends ArrayList<IData> {
 		this.selectedIndex = selectedIndex;
 		//System.out.println(selectedIndex);
 		updateSelectedIndex();
+	}
+	
+	public void addLinkedModelData(ModelData md) {
+		this.linkedModelDatas.add(md);
 	}
 }

@@ -30,13 +30,6 @@ public class Main {
 		ModelData directors = new ModelData();
 		directors.add(d1);
 		directors.add(d2);
-//		for(String s : directors.toStringArray()) {
-//			System.out.println(s);
-//		}
-//		directors.setSelectedIndex(1);
-//		System.out.println(directors.getSelected().toString());
-//		directors.deleteSelected();
-//		System.out.println(directors.getSelected().toString());
 		
 		//Create employee model
 		Employee e1 = new Employee("Jackie", "Chan", new Date(1970, 12, 1));
@@ -80,6 +73,7 @@ public class Main {
 		accounts.add(c2);
 		accounts.add(c3);
 		accounts.add(c4);
+		accounts.addLinkedModelData(directors);
 		
 		ProductManagementPage pmp = new ProductManagementPage(products, directors);
 		

@@ -29,13 +29,20 @@ public class AddAccountComponent extends JPanel{
 		
 		//To choose what to add
 		JRadioButton client = new JRadioButton("Client");
+		client.setSelected(true);
 		JRadioButton employee = new JRadioButton("Employee");
 		JRadioButton director = new JRadioButton("Director");
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(client);
 		bg.add(employee);
 		bg.add(director);
-		
+		JRadioButton [] rbs = new JRadioButton[3];
+		rbs[0] = client;
+		rbs[1] = employee;
+		rbs[2] = director;
+		inputs.add(rbs[0]);
+		inputs.add(rbs[1]);
+		inputs.add(rbs[2]);
 		
 		//FirstName field
 		inputs.add( new JLabel("FirstName"));
@@ -59,7 +66,7 @@ public class AddAccountComponent extends JPanel{
 		
 		//Add button
 		JButton addBtn = new JButton("Add");
-		addBtn.addActionListener(accountController.new Add(firstName, lastName, birthDay));
+		addBtn.addActionListener(accountController.new Add(firstName, lastName, birthDay, rbs));
 		
 		this.add(addBtn, BorderLayout.SOUTH);
 	}
