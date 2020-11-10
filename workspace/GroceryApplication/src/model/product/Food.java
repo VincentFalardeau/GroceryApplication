@@ -1,5 +1,7 @@
 package model.product;
 
+import model.data.IData;
+
 //Vincent Falardeau
 //20170932
 
@@ -33,7 +35,13 @@ public class Food extends Product{
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		
+		if(name.length() > IData.MAX_INPUT_LEN) {
+			this.name = name.substring(0, IData.MAX_INPUT_LEN);
+		}
+		else {
+			this.name = name;
+		}
 	}
 
 	public String getColor() {
@@ -41,7 +49,13 @@ public class Food extends Product{
 	}
 
 	public void setColor(String color) {
-		this.color = color;
+		
+		if(color.length() > IData.MAX_INPUT_LEN) {
+			this.color = color.substring(0, IData.MAX_INPUT_LEN);
+		}
+		else {
+			this.color = color;
+		}
 	}
 
 	public float getWeight() {
@@ -50,5 +64,12 @@ public class Food extends Product{
 
 	public void setWeight(float weight) {
 		this.weight = weight;
+		if(weight < 0.0f) {
+			this.weight = 0.0f;
+		}
+		else if((int)weight > IData.MAX_NUMBER) {
+			this.weight = IData.MAX_NUMBER;
+		}
+		
 	}
 }

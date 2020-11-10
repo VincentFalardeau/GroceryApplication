@@ -22,7 +22,7 @@ public abstract class Account implements IData{
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setBirthDate(birthDate);
-		this.setEmail(lastName + firstName + "@magasin.ca");
+		this.setEmail(this.lastName + this.firstName + "@magasin.ca");
 		this.balance = 0.0f;
 		this.favoriteProducts = new ArrayList<Product>();
 	}
@@ -39,6 +39,9 @@ public abstract class Account implements IData{
 		balance += amount;
 		if(balance < 0.0f) {//to prevent negative balance
 			balance = 0.0f;
+		}
+		else if((int)balance > IData.MAX_NUMBER) {
+			balance = IData.MAX_NUMBER;
 		}
 	}
 	
@@ -81,7 +84,13 @@ public abstract class Account implements IData{
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		
+		if(firstName.length() > IData.MAX_INPUT_LEN) {
+			this.firstName = firstName.substring(0, IData.MAX_INPUT_LEN);
+		}
+		else {
+			this.firstName = firstName;
+		}
 	}
 
 	public String getLastName() {
@@ -89,7 +98,13 @@ public abstract class Account implements IData{
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		
+		if(lastName.length() > IData.MAX_INPUT_LEN) {
+			this.lastName = lastName.substring(0, IData.MAX_INPUT_LEN);
+		}
+		else {
+			this.lastName = lastName;
+		}
 	}
 
 	public LocalDate getBirthDate() {
@@ -104,7 +119,7 @@ public abstract class Account implements IData{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	private void setEmail(String email) {
 		this.email = email;
 	}
 }

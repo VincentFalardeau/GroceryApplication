@@ -11,6 +11,7 @@ correspond au filtre.
 La page d'information permet de visualiser les comptes, 
 d'ajouter de l'argent, de retirer de l'argent et de gérer les produits favoris, 
 et ce, selon les permissions.
+De plus, on peut y voir la liste des produits disponibles.
 J'ai interprété de l'énoncé qu'un client ne pouvait pas se faire retirer de l'argent et 
 que tout les comptes pouvaient avoir un solde et des produits favoris.
 

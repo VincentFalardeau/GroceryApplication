@@ -1,5 +1,7 @@
 package model.product;
 
+import model.data.IData;
+
 //Vincent Falardeau
 //20170932
 
@@ -37,7 +39,12 @@ public class Furniture extends Product{
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		if(type.length() > IData.MAX_INPUT_LEN) {
+			this.type = type.substring(0, IData.MAX_INPUT_LEN);
+		}
+		else {
+			this.type = type;
+		}
 	}
 
 	public float getPrice() {
@@ -45,7 +52,15 @@ public class Furniture extends Product{
 	}
 
 	public void setPrice(float price) {
-		this.price = price;
+		if(price < 0.0f) {
+			this.price = 0.0f;
+		}
+		else if((int)price > IData.MAX_NUMBER) {
+			this.price = IData.MAX_NUMBER;
+		}
+		else {
+			this.price = price;
+		}
 	}
 
 	public float getHeight() {
@@ -53,6 +68,14 @@ public class Furniture extends Product{
 	}
 
 	public void setHeight(float height) {
-		this.height = height;
+		if(height < 0.0f) {
+			this.height = 0.0f;
+		}
+		else if((int)height > IData.MAX_NUMBER) {
+			this.height = IData.MAX_NUMBER;
+		}
+		else {
+			this.height = height;
+		}
 	}
 }
