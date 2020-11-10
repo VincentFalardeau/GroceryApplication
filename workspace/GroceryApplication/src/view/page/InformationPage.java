@@ -9,15 +9,20 @@ import javax.swing.JPanel;
 
 import controller.AccountController;
 import controller.ProductController;
+import model.account.Accounts;
 import model.data.Model;
+import model.product.Products;
 import view.account.MoneyComponent;
 import view.data.ModelListView;
 import view.product.FavoriteProductComponent;
 
+//Vincent Falardeau
+//20170932
+
 public class InformationPage extends JFrame{
 	
-	public InformationPage(Model accounts, AccountController accountController, 
-			Model products, ProductController productController) {
+	public InformationPage(Accounts accounts, AccountController accountController, 
+			Products products, ProductController productController) {
 		
 		//Frame settings
 		this.setSize(1000, 500);

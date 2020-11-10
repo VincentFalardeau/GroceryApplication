@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.ProductController;
+import model.account.Accounts;
 import model.data.Model;
 import controller.AccountController;
 import controller.ModelDataController;
@@ -15,9 +16,12 @@ import view.data.ModelListView;
 import view.product.AddFoodComponent;
 import view.product.AddFurnitureComponent;
 
-public class AccountEditComponent extends JPanel{
+//Vincent Falardeau
+//20170932
+
+public class EditAccountComponent extends JPanel{
 	
-	public AccountEditComponent(Model accounts, AccountController accountsController) {
+	public EditAccountComponent(Accounts accounts, AccountController accountsController) {
 		
 		//Panel settings
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));//Vertical flow layout

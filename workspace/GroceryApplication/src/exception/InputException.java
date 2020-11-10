@@ -1,5 +1,7 @@
 package exception;
 
+//Vincent Falardeau
+//20170932
 
 //Thrown when an error occurs during an input operation
 public class InputException extends Exception{

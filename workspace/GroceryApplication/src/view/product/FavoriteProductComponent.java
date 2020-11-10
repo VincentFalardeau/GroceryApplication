@@ -14,6 +14,9 @@ import controller.ProductController;
 import model.data.Model;
 import view.data.ModelListView;
 
+//Vincent Falardeau
+//20170932
+
 public class FavoriteProductComponent extends JPanel{
 	
 	public FavoriteProductComponent(Model products,

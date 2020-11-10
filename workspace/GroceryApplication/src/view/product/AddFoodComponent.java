@@ -12,6 +12,9 @@ import javax.swing.JTextField;
 import controller.ModelDataController;
 import controller.ProductController;
 
+//Vincent Falardeau
+//20170932
+
 public class AddFoodComponent extends JPanel {
 
 	public AddFoodComponent(ProductController productController) {

@@ -2,7 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -10,6 +11,7 @@ import javax.swing.JTextField;
 
 import exception.InputException;
 import model.account.Account;
+import model.account.Accounts;
 import model.account.Client;
 import model.account.Director;
 import model.account.Employee;
@@ -17,17 +19,21 @@ import model.data.IData;
 import model.data.Model;
 import model.product.Food;
 import model.product.Product;
+import model.product.Products;
+
+//Vincent Falardeau
+//20170932
 
 public class AccountController extends ModelDataController {
 	
 		//Models
-		private Model accounts;
-		private Model products;
+		private Accounts accounts;
+		private Products products;
 		
-		public AccountController(Model accounts, Model products) {
+		public AccountController(Model accounts, Products products) {
 			super(accounts);
 			this.products = products;
-			this.accounts = super.modelData;
+			this.accounts = (Accounts)accounts;
 		}
 		
 		//To add an account
@@ -63,7 +69,7 @@ public class AccountController extends ModelDataController {
 					}
 					
 					//Get the birthDate
-					Date birthDate = new Date(this.birthDate.getText());
+					LocalDate birthDate = LocalDate.parse(this.birthDate.getText());
 					
 					//Add an account according to the selected account type
 					if(accountType[0].isSelected()) {
@@ -77,7 +83,7 @@ public class AccountController extends ModelDataController {
 					}
 					
 				//In case the given birth date is invalid
-				} catch(IllegalArgumentException iae) {
+				} catch(DateTimeParseException dtpe) {
 					
 					JOptionPane.showMessageDialog(null, "Please enter a valid date", "Error", 0);
 				

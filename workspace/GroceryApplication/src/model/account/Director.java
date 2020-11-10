@@ -1,10 +1,13 @@
 package model.account;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+//Vincent Falardeau
+//20170932
 
 public class Director extends Employee {
 	
-	public Director(String firstName, String lastName, Date birthDate){
+	public Director(String firstName, String lastName, LocalDate birthDate){
 		super(firstName, lastName, birthDate);
 	}
 	

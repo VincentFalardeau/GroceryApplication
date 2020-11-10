@@ -21,6 +21,9 @@ import model.data.Model;
 import model.product.Food;
 import model.data.IData;
 
+//Vincent Falardeau
+//20170932
+
 public class ModelDataController {
 	
 	Model modelData;

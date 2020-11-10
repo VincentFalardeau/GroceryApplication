@@ -1,5 +1,8 @@
 package model.product;
 
+//Vincent Falardeau
+//20170932
+
 public class Furniture extends Product{
 	
 	private String type;

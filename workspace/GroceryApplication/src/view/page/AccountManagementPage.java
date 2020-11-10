@@ -6,12 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.AccountController;
+import model.account.Accounts;
 import model.data.Model;
-import view.account.AccountEditComponent;
+import view.account.EditAccountComponent;
+
+//Vincent Falardeau
+//20170932
 
 public class AccountManagementPage extends JFrame{
 	
-	public AccountManagementPage(Model accounts, AccountController accountController) {
+	public AccountManagementPage(Accounts accounts, AccountController accountController) {
 		
 		//Frame settings
 		this.setSize(1000, 500);
@@ -23,7 +27,7 @@ public class AccountManagementPage extends JFrame{
 		content.setLayout(new FlowLayout());
 		
 		//Account list
-		AccountEditComponent aev = new AccountEditComponent(accounts, accountController);
+		EditAccountComponent aev = new EditAccountComponent(accounts, accountController);
 		content.add(aev);
 
 		this.setVisible(true);

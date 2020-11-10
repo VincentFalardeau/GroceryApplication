@@ -1,5 +1,8 @@
 package model.product;
 
+//Vincent Falardeau
+//20170932
+
 import model.data.IData;
 
 public abstract class Product implements IData{

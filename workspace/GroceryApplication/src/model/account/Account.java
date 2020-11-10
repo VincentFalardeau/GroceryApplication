@@ -1,21 +1,24 @@
 package model.account;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import model.data.IData;
 import model.product.Product;
+
+//Vincent Falardeau
+//20170932
 
 public abstract class Account implements IData{
 	
 	private String firstName;
 	private String lastName;
-	private Date birthDate;
+	private LocalDate birthDate;
 	private String email;
 	private float balance;
 	private ArrayList<Product> favoriteProducts;
 	
-	public Account(String firstName, String lastName, Date birthDate) {
+	public Account(String firstName, String lastName, LocalDate birthDate) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setBirthDate(birthDate);
@@ -89,11 +92,11 @@ public abstract class Account implements IData{
 		this.lastName = lastName;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

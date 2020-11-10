@@ -13,6 +13,9 @@ import controller.AccountController;
 import controller.ProductController;
 import controller.ProductController.AddFood;
 
+//Vincent Falardeau
+//20170932
+
 public class MoneyComponent extends JPanel{
 	
 	public MoneyComponent(AccountController accountController) {

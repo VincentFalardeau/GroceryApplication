@@ -15,24 +15,30 @@ import javax.swing.ListModel;
 
 import exception.InputException;
 import model.account.Account;
+import model.account.Accounts;
 import model.account.Client;
 import model.account.Director;
+import model.account.Directors;
 import model.data.IData;
 import model.data.Model;
 import model.product.Food;
 import model.product.Furniture;
 import model.product.Product;
+import model.product.Products;
+
+//Vincent Falardeau
+//20170932
 
 public class ProductController extends ModelDataController {
 	
 	//Models
-	private Model products;
-	private Model directors;
-	private Model accounts;
+	private Products products;
+	private Directors directors;
+	private Accounts accounts;
 	
-	public ProductController(Model products, Model directors, Model accounts) {
+	public ProductController(Model products, Directors directors, Accounts accounts) {
 		super(products);
-		this.products = super.modelData;
+		this.products = (Products)products;
 		this.directors = directors;	
 		this.accounts = accounts;	
 	}

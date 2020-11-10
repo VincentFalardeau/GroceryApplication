@@ -20,9 +20,12 @@ import controller.ProductController;
 import model.data.Model;
 import view.data.ModelListView;
 
-public class ProductEditComponent extends JPanel{
+//Vincent Falardeau
+//20170932
 
-	public ProductEditComponent(Model products, ProductController productController) {
+public class EditProductComponent extends JPanel{
+
+	public EditProductComponent(Model products, ProductController productController) {
 		
 		//Panel settings
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));//Vertical flow layout

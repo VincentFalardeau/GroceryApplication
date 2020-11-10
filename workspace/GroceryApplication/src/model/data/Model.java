@@ -2,12 +2,16 @@ package model.data;
 
 import java.util.ArrayList;
 
+import model.account.Director;
 import view.data.IDataView;
 
-public class Model extends ArrayList<IData> {
+//Vincent Falardeau
+//20170932
+
+public abstract class Model extends ArrayList<IData> {
 	
 	//The index of the selected item
-	private int selectedIndex;
+	protected int selectedIndex;
 	
 	//The views displaying the data
 	private ArrayList<IDataView> views;
@@ -15,18 +19,13 @@ public class Model extends ArrayList<IData> {
 	//To filter the items
 	private String filter;
 	
-	//Models to update along with the current one,
-	//to maintain coherence
-	private ArrayList<Model> linkedModels;
-	
 	public Model(){
 		super();
 		this.views = new ArrayList<IDataView>();
 		this.filter = "";
-		this.linkedModels = new ArrayList<Model>(); 
 	}
 	
-	//Adds data in the list, returns true if successfully added
+	//Adds data in the list
 	@Override
 	public boolean add(IData x) {
 		
@@ -35,12 +34,21 @@ public class Model extends ArrayList<IData> {
 		//update the associated views
 		update();
 		
-		//update the linked models
-		for(Model md : linkedModels) {
-			md.add(x);
-		}
 		return added;
+	}
+	
+	//Removes an object from the list
+	@Override
+	public boolean remove(Object o) {
 		
+		//Remove the object
+		IData x = (IData)o;
+		boolean removed = super.remove(x);
+		
+		//Update the views
+		update();
+		
+		return removed;
 	}
 	
 	//Gives a string array representing the array list.
@@ -85,12 +93,7 @@ public class Model extends ArrayList<IData> {
 		
 		if(selectedIndex >= 0) {
 			
-			//Delete the selected object in the linked models
-			for(Model md : linkedModels) {
-				md.deleteSelected();
-			}
-			
-			//Delete the selected object here
+			//Delete the selected object
 			this.remove(selectedIndex);
 			
 			//Set the selected index to 0 if possible
@@ -110,8 +113,8 @@ public class Model extends ArrayList<IData> {
 		views.add(u);
 	}
 	
-	//Responsible for updating the views displaying the model
-	private void update() {
+	//Updates the views displaying the model
+	protected void update() {
 		for(IDataView v : views) {
 			v.update();
 		}
@@ -119,19 +122,8 @@ public class Model extends ArrayList<IData> {
 	
 	//Updates the selected index in all the views
 	private void updateSelectedIndex() {
-		
 		for(IDataView v : views) {
 			v.updateSelectedIndex();
-		}
-		
-		//If the selected item is in a linked model,
-		//select it there too.
-		for(Model md : linkedModels) {
-			int index = md.indexOf(this.getSelected());
-			if(index >= 0) {
-				md.setSelectedIndex(index);
-			}
-			
 		}
 	}
 
@@ -142,9 +134,5 @@ public class Model extends ArrayList<IData> {
 	public void setSelectedIndex(int selectedIndex) {	
 		this.selectedIndex = selectedIndex;
 		updateSelectedIndex();
-	}
-	
-	public void addLinkedModel(Model md) {
-		this.linkedModels.add(md);
 	}
 }

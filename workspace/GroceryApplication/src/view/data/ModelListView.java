@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import controller.ModelDataController;
 import model.data.Model;
 
+//Vincent Falardeau
+//20170932
+
 public class ModelListView extends JPanel implements IDataView {
 	
 	Model modelData;

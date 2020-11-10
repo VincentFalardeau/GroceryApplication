@@ -7,14 +7,19 @@ import javax.swing.JPanel;
 
 import controller.ModelDataController;
 import controller.ProductController;
+import model.account.Directors;
 import model.data.Model;
+import model.product.Products;
 import view.data.ModelListView;
-import view.product.ProductEditComponent;
+import view.product.EditProductComponent;
+
+//Vincent Falardeau
+//20170932
 
 public class ProductManagementPage extends JFrame {
 
-	public ProductManagementPage(Model products, ProductController productController, 
-			Model directors, ModelDataController directorsController) {
+	public ProductManagementPage(Products products, ProductController productController, 
+			Directors directors, ModelDataController directorsController) {
 		
 		//Frame settings
 		this.setSize(800, 800);
@@ -30,7 +35,7 @@ public class ProductManagementPage extends JFrame {
 		content.add(directorsView);
 		
 		//Product list
-		ProductEditComponent productsView = new ProductEditComponent(products, productController);
+		EditProductComponent productsView = new EditProductComponent(products, productController);
 		content.add(productsView);	
 
 		this.setVisible(true);

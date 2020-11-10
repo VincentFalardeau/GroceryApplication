@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import controller.AccountController;
 import controller.ProductController.AddFood;
 
+//Vincent Falardeau
+//20170932
+
 public class AddAccountComponent extends JPanel{
 
 	public AddAccountComponent(AccountController accountController) {
@@ -58,7 +61,7 @@ public class AddAccountComponent extends JPanel{
 		inputs.add(lastName);
 		
 		//Birth date input
-		inputs.add( new JLabel("Birth date (yyyy/mm/jj)"));
+		inputs.add( new JLabel("Birth date (yyyy-mm-jj)"));
 		JTextField birthDay = new JTextField();
 		birthDay.setPreferredSize(new Dimension(100,20));
 		inputs.add(birthDay);

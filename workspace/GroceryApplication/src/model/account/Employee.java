@@ -1,10 +1,13 @@
 package model.account;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+//Vincent Falardeau
+//20170932
 
 public class Employee extends Account{
 	
-	public Employee(String firstName, String lastName, Date birthDate) {
+	public Employee(String firstName, String lastName, LocalDate birthDate) {
 		super(firstName, lastName, birthDate);
 	}
 	
