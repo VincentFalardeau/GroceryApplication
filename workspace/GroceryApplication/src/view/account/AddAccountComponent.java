@@ -18,6 +18,7 @@ public class AddAccountComponent extends JPanel{
 
 	public AddAccountComponent(AccountController accountController) {
 		
+		//Panel settings
 		this.setLayout(new BorderLayout());
 		
 		//Label
@@ -27,7 +28,7 @@ public class AddAccountComponent extends JPanel{
 		JPanel inputs = new JPanel();
 		inputs.setLayout(new FlowLayout());
 		
-		//To choose what to add
+		//Account type selector
 		JRadioButton client = new JRadioButton("Client");
 		client.setSelected(true);
 		JRadioButton employee = new JRadioButton("Employee");
@@ -44,19 +45,19 @@ public class AddAccountComponent extends JPanel{
 		inputs.add(rbs[1]);
 		inputs.add(rbs[2]);
 		
-		//FirstName field
+		//FirstName input
 		inputs.add( new JLabel("FirstName"));
 		JTextField firstName = new JTextField();
 		firstName.setPreferredSize(new Dimension(100,20));
 		inputs.add(firstName);
 		
-		//FirstName field
+		//LastName input
 		inputs.add( new JLabel("LastName"));
 		JTextField lastName = new JTextField();
 		lastName.setPreferredSize(new Dimension(100,20));
 		inputs.add(lastName);
 		
-		//Date field
+		//Birth date input
 		inputs.add( new JLabel("Birth date (yyyy/mm/jj)"));
 		JTextField birthDay = new JTextField();
 		birthDay.setPreferredSize(new Dimension(100,20));

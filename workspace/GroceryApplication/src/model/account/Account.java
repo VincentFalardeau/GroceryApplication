@@ -24,12 +24,14 @@ public abstract class Account implements IData{
 		this.favoriteProducts = new ArrayList<Product>();
 	}
 	
+	//Add a favorite product, if not already in favorites
 	public void addFavoriteProduct(Product product) {
 		if(!favoriteProducts.contains(product)) {
 			this.favoriteProducts.add(product);
 		}
 	}
 	
+	//Add money 
 	public void addMoney(float amount) {
 		balance += amount;
 		if(balance < 0.0f) {//to prevent negative balance
@@ -37,6 +39,7 @@ public abstract class Account implements IData{
 		}
 	}
 	
+	//Remove a favorite product
 	public void removeFavoriteProduct(Product product) {
 		this.favoriteProducts.remove(product);
 	}
@@ -54,13 +57,15 @@ public abstract class Account implements IData{
 		return "name: " + getName() + ", birth date: " + birthDate.toString() + ", email: " + email;
 	}
 	
+	//Gives more details about the account than the toString method
 	public String getDetails() {
 		String details = toString() + "\n";
 		
+		//The balance
 		details += "Balance: " + balance + "$" + "\n";
 		
+		//The favorite products
 		details += "Favorite products: " + "\n";
-		
 		for(Product p : favoriteProducts) {
 			details += "-" + p.toString() + "\n";
 		}
